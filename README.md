@@ -78,3 +78,39 @@ void setup() {
 void loop() {
   ledcWrite(0, 128);            // 50% speed (0–255)
 }
+
+
+## 🔄 Task Loop Model (Async-Cooperative)
+
+This firmware uses a non-blocking, cooperative scheduling approach to avoid delays and ensure responsiveness across all subsystems.
+
+```cpp
+void setup() {
+  initSerial();
+  initWiFi();
+  initWebServer();
+  initDisplay();
+  initEncoder();
+  initSensors();
+  initActuators();
+
+  scheduler.addTask("readTemps", 1000, readTemperatures);
+  scheduler.addTask("updateUI", 500, drawUI);
+  scheduler.addTask("fanControl", 500, updateFan);
+}
+
+void loop() {
+  scheduler.run();        // Check and run timed tasks
+  checkRotaryInput();     // Poll encoder
+  handleWiFi();           // Reconnect if needed
+}
+
+| Design Choice                       | Benefit                                             |
+| ----------------------------------- | --------------------------------------------------- |
+| 🧩 **Modular folders**              | Each responsibility is isolated and testable        |
+| ⚙️ **Ticker/task system**           | Avoids `delay()` and blocking code                  |
+| 🛡️ **Error handling per module**   | Sensor read failures don’t crash system             |
+| 🧠 **Preferences**                  | Config state stored in flash, auto-reloaded         |
+| 🌐 **Async Web Server**             | Doesn’t block UI/sensors                            |
+| 🧼 **Non-blocking display updates** | UI refreshes when data changes, not just on a timer |
+

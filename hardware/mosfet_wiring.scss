@@ -1,0 +1,12 @@
+USB 5V ──────────────┬────────> ESP32 VIN (or onboard 5V)
+                     │
+                     ├────────> Fan VCC (+5V)
+                     │
+                     └────────> Servo VCC (+5V)
+
+ESP32 GND ───────────────┬────────┐
+                         │        │
+                      Fan GND   Servo GND
+                         │        │
+                         └──→ [MOSFET Drain]
+                              [MOSFET Source] ───→ GND
