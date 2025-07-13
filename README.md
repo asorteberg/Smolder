@@ -10,6 +10,8 @@ This project is a Wi-Fi-connected controller for a Kamado-style grill, using an 
 - Panel-mount connectors for modular wiring
 - Optional battery operation (5V USB recommended)
 
+In contrast to previous open-source grill controllers, the primary objective here is create a solution that is cheaper then most of the commerical options while offering full customizibility. 
+
 ---
 
 ## 📦 Bill of Materials (BOM)
