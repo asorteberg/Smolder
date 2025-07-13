@@ -83,33 +83,40 @@ void loop() {
 
 This firmware uses a non-blocking, cooperative scheduling approach to avoid delays and ensure responsiveness across all subsystems.
 
-```cpp
-void setup() {
-  initSerial();
-  initWiFi();
-  initWebServer();
-  initDisplay();
-  initEncoder();
-  initSensors();
-  initActuators();
+/src/
+│
+├── main.cpp                      → App entry point, sets up tasks, loop dispatcher
+│
+├── config.h                      → Constants, pin mappings, default settings
+│
+├── ui/
+│   ├── ui_manager.cpp/h         → View switching, rotary routing
+│   ├── view_base.h              → Interface for screen views
+│   ├── views/
+│   │   ├── temp_view.cpp/h      → Temp display & setpoint adjustment
+│   │   ├── settings_view.cpp/h  → Settings menu navigation
+│   │   └── (future views...)    → GraphView, FanView, etc.
+│   ├── encoder.cpp/h            → Rotary encoder and button logic (interrupt or polling)
+│   └── display.cpp/h            → OLED screen setup & global draw helpers
+│
+├── sensors/
+│   ├── thermocouple.cpp/h       → MAX6675 handling, smoothing, error states
+│   └── eeprom.cpp/h             → Load/save settings (target temp, PID gains, etc.)
+│
+├── control/
+│   ├── fan_control.cpp/h        → MOSFET speed control (PWM)
+│   ├── servo_control.cpp/h      → Damper servo angle logic
+│   ├── pid.cpp/h                → PID algorithm to compute output values
+│   └── setpoint.cpp/h           → Handles temp targets and adjustment logic
+│
+├── network/
+│   ├── wifi.cpp/h               → WiFiManager auto-connect, fallback AP mode
+│   ├── web_server.cpp/h         → AsyncWebServer routes for remote status & control
+│   └── ota.cpp/h                → ElegantOTA integration for browser firmware updates
+│
+├── utils/
+│   ├── logger.cpp/h             → Serial logging macros (LOG_INFO, LOG_ERROR, etc.)
+│   ├── scheduler.cpp/h          → Task manager using millis() or Ticker
+│   └── math_utils.cpp/h         → Map, clamp, average helpers (for PID/input filtering)
 
-  scheduler.addTask("readTemps", 1000, readTemperatures);
-  scheduler.addTask("updateUI", 500, drawUI);
-  scheduler.addTask("fanControl", 500, updateFan);
-}
-
-void loop() {
-  scheduler.run();        // Check and run timed tasks
-  checkRotaryInput();     // Poll encoder
-  handleWiFi();           // Reconnect if needed
-}
-
-| Design Choice                       | Benefit                                             |
-| ----------------------------------- | --------------------------------------------------- |
-| 🧩 **Modular folders**              | Each responsibility is isolated and testable        |
-| ⚙️ **Ticker/task system**           | Avoids `delay()` and blocking code                  |
-| 🛡️ **Error handling per module**   | Sensor read failures don’t crash system             |
-| 🧠 **Preferences**                  | Config state stored in flash, auto-reloaded         |
-| 🌐 **Async Web Server**             | Doesn’t block UI/sensors                            |
-| 🧼 **Non-blocking display updates** | UI refreshes when data changes, not just on a timer |
 

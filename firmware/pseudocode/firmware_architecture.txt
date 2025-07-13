@@ -1,0 +1,36 @@
+/src/
+│
+├── main.cpp                      → App entry point, sets up tasks, loop dispatcher
+│
+├── config.h                      → Constants, pin mappings, default settings
+│
+├── ui/
+│   ├── ui_manager.cpp/h         → View switching, rotary routing
+│   ├── view_base.h              → Interface for screen views
+│   ├── views/
+│   │   ├── temp_view.cpp/h      → Temp display & setpoint adjustment
+│   │   ├── settings_view.cpp/h  → Settings menu navigation
+│   │   └── (future views...)    → GraphView, FanView, etc.
+│   ├── encoder.cpp/h            → Rotary encoder and button logic (interrupt or polling)
+│   └── display.cpp/h            → OLED screen setup & global draw helpers
+│
+├── sensors/
+│   ├── thermocouple.cpp/h       → MAX6675 handling, smoothing, error states
+│   └── eeprom.cpp/h             → Load/save settings (target temp, PID gains, etc.)
+│
+├── control/
+│   ├── fan_control.cpp/h        → MOSFET speed control (PWM)
+│   ├── servo_control.cpp/h      → Damper servo angle logic
+│   ├── pid.cpp/h                → PID algorithm to compute output values
+│   └── setpoint.cpp/h           → Handles temp targets and adjustment logic
+│
+├── network/
+│   ├── wifi.cpp/h               → WiFiManager auto-connect, fallback AP mode
+│   ├── web_server.cpp/h         → AsyncWebServer routes for remote status & control
+│   └── ota.cpp/h                → ElegantOTA integration for browser firmware updates
+│
+├── utils/
+│   ├── logger.cpp/h             → Serial logging macros (LOG_INFO, LOG_ERROR, etc.)
+│   ├── scheduler.cpp/h          → Task manager using millis() or Ticker
+│   └── math_utils.cpp/h         → Map, clamp, average helpers (for PID/input filtering)
+
