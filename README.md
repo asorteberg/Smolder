@@ -34,6 +34,21 @@ This project is a Wi-Fi-connected controller for a Kamado-style grill, using an 
 
 ---
 
+| Component                     | Part Number / Description             | Notes                                      |
+|-------------------------------|----------------------------------------|--------------------------------------------|
+| Microcontroller               | ESP32 Dev Module                       | Wi-Fi + Bluetooth, 3.3V logic               |
+| Display                       | 0.96" OLED (SSD1306, I2C)              | 128x64 pixels, 3.3V/5V compatible           |
+| Rotary Encoder + Button      | KY-040 Module                          | Includes pushbutton switch (SW pin)        |
+| Fan                           | 5V DC Brushless Fan (e.g. 4010)        | For airflow control                         |
+| Servo                         | SG90 Micro Servo                       | Controls damper                             |
+| Thermocouple Amplifier        | MAX6675 Module                         | Reads K-type thermocouples                  |
+| Thermocouple Jack             | 2.5mm Mono Panel Mount Jack (SJ1-2513) | For clean external thermocouple connections |
+| Thermocouple Probe            | K-Type with 2.5mm Plug                 | Must be ungrounded for electrical safety    |
+| MOSFET                        | IRLZ44N or IRL540N                     | Logic-level N-FET, used with custom board   |
+| Passive Components            | 10kΩ, 220Ω Resistors, 1N5819 Diode     | For MOSFET pull-down, gate, and flyback     |
+| Button Input (Optional)       | —                                      | Handled by encoder click                    |
+| Enclosure                     | Custom 3D Printed                      | With cutouts for jack, USB, screen, encoder |
+
 ## ⚙️ Firmware Overview
 
 ### 🔌 Features

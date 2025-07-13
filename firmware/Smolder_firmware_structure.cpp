@@ -1,4 +1,4 @@
-// GrillBit Firmware - Starter PlatformIO Structure
+// Smolder Firmware - Starter PlatformIO Structure
 
 // main.cpp
 #include <Arduino.h>
