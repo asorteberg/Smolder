@@ -14,31 +14,13 @@ This project is a Wi-Fi-connected controller for a Kamado-style grill, using an 
 
 ## 📦 Bill of Materials (BOM)
 
-| #  | Component                           | Description                                      | Part Number(s)                     | Alternatives                     |
-|----|-------------------------------------|--------------------------------------------------|------------------------------------|----------------------------------|
-| 1  | ESP32 Dev Board                     | ESP32-WROOM DevKit v1                            | ESP32-DEVKITC-32D                  | NodeMCU ESP32, WROOM-32U         |
-| 2  | Thermocouple Probe (x2)            | K-type, M6 threaded, ~1m                         | K-01-M6-1000                       | Omega XCIB-K-M6-72               |
-| 3  | MAX6675 Thermocouple Amplifier (x2)| SPI thermocouple interface                       | MAX6675 Module                     | MAX31855                         |
-| 4  | SG90 Micro Servo                   | Controls damper position                         | TowerPro SG90                      | MG90S                            |
-| 5  | Blower Fan                         | 5V, 30mm radial fan for airflow                  | 3010 Blower Fan 5V                 | 4010 Fan                         |
-| 6  | OLED Display                       | 0.96" 128x64 I2C SSD1306                         | SSD1306 OLED                       | SH1106 OLED                      |
-| 7  | Tactile Button Panel               | 3-button breakout or panel mount switches        | DFR0029 (or tact switch board)     | DIY tact switches                |
-| 8  | Panel-Mount Thermocouple Jack (x2)| K-type screw terminal, mini flat panel mount     | PMP-K-M                            | Omega SMP-K-M                    |
-| 9  | Panel USB Power Port               | USB-A or USB-C panel mount                       | USB-A Female Panel Mount           | USB-C Panel Mount                |
-| 10 | Fan/Servo Connector                | 6-pin GX12 aviation connector                    | GX12-6                             | JST-XH 6-pin                     |
-| 11 | Battery Holder + Boost             | 18650 holder with 5V boost module                | MT3608 + holder                    | TP4056 module                    |
-| 12 | Wiring Kit                         | Dupont cables or JST harness                     | Jumper wire kit                    | JST pigtails                     |
-| 13 | N-Channel MOSFET Breakout         | Logic-level with pull-down and gate resistors    | IRLZ44N / AO3400 Module            | AO3401, STP55NF06L               |
-| 14 | Flyback Diode (optional)          | Across fan terminals                             | 1N5819                             | 1N4007                           |
-| 15 | 3D-Printed Enclosure              | Designed in Fusion 360                           | –                                  | Self-printed                     |
-
----
+## 📦 Bill of Materials (BOM)
 
 | Component                     | Part Number / Description             | Notes                                      |
 |-------------------------------|----------------------------------------|--------------------------------------------|
 | Microcontroller               | ESP32 Dev Module                       | Wi-Fi + Bluetooth, 3.3V logic               |
-| Display                       | 0.96" OLED (SSD1306, I2C)              | 128x64 pixels, 3.3V/5V compatible           |
-| Rotary Encoder + Button      | KY-040 Module                          | Includes pushbutton switch (SW pin)        |
+| Display                       | 1.3" SH1106 OLED.                      | 128x64 pixels, 3.3V/5V compatible           |
+| Rotary Encoder + Button       | KY-040 Module                          | Includes pushbutton switch (SW pin)        |
 | Fan                           | 5V DC Brushless Fan (e.g. 4010)        | For airflow control                         |
 | Servo                         | SG90 Micro Servo                       | Controls damper                             |
 | Thermocouple Amplifier        | MAX6675 Module                         | Reads K-type thermocouples                  |
@@ -48,6 +30,7 @@ This project is a Wi-Fi-connected controller for a Kamado-style grill, using an 
 | Passive Components            | 10kΩ, 220Ω Resistors, 1N5819 Diode     | For MOSFET pull-down, gate, and flyback     |
 | Button Input (Optional)       | —                                      | Handled by encoder click                    |
 | Enclosure                     | Custom 3D Printed                      | With cutouts for jack, USB, screen, encoder |
+
 
 ## ⚙️ Firmware Overview
 
