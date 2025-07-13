@@ -1,4 +1,4 @@
-# 🔥 ESP32 Kamado Grill Controller
+# 🔥 SMOLDER ESP32 Kamado Grill Controller
 
 This project is a Wi-Fi-connected controller for a Kamado-style grill, using an ESP32 microcontroller to manage:
 
@@ -14,7 +14,6 @@ This project is a Wi-Fi-connected controller for a Kamado-style grill, using an 
 
 ## 📦 Bill of Materials (BOM)
 
-## 📦 Bill of Materials (BOM)
 
 | Component                     | Part Number / Description             | Notes                                      |
 |-------------------------------|----------------------------------------|--------------------------------------------|
