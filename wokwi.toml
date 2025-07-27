@@ -1,0 +1,22 @@
+[wokwi]
+version = 1
+firmware = ".pio/build/esp32dev/firmware.elf"
+elf = "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/build/esp32dev/firmware.elf"
+
+[env]
+platform = "espressif32"
+board = "esp32-devkit-v1"
+
+[[custom_components]]
+type = "ssd1306"
+id = "oled"
+addr = 0x3C
+
+[[custom_components]]
+type = "wokwi-ky-040"
+id = "encoder"
+clk = 2
+dt = 3
+sw = 4
+
+

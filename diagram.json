@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "author": "Smolder Firmware UI Test",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp32",
+      "top": -100, "left": 0,
+      "attrs": { 
+  "serialInterface": "USB_SERIAL_JTAG" 
+}
+    },
+    {
+      "type": "wokwi-ssd1306",
+      "id": "oled",
+      "top": 140,
+      "left": 190,
+      "attrs": {
+        "width": "128",
+        "height": "64"
+      }
+    },
+    {
+      "type": "wokwi-ky-040",
+      "id": "encoder",
+      "top": 180,
+      "left": -180,
+      "attrs": {}
+    }
+  ],
+
+  "connections": [
+     [ "esp32:D21", "oled:DATA", "green" ],
+    [ "esp32:D22", "oled:CLK", "blue" ],
+    [ "esp32:GND.2", "oled:GND", "black" ],
+    [ "esp32:3V3", "oled:3V3", "red" ],
+    [ "esp32:D2", "encoder:CLK", "orange" ],
+    [ "esp32:D23", "encoder:DT", "purple" ],
+    [ "esp32:D4", "encoder:SW", "yellow" ],
+    [ "esp32:GND.1", "encoder:GND", "black" ],
+    [ "esp32:3V3", "encoder:VCC", "red" ],
+    [ "esp32:TX0", "$serialMonitor:RX", "", [] ], 
+    [ "esp32:RX0", "$serialMonitor:TX", "", [] ]
+    
+  ]
+}

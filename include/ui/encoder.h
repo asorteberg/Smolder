@@ -1,22 +1,19 @@
 #pragma once
-#include <Arduino.h>
+#include <functional>
 
 class EncoderInput {
 public:
-  void begin(uint8_t clkPin, uint8_t dtPin, uint8_t swPin);
-  void update();  // Call in loop() if polling
+  void begin(int clkPin, int dtPin, int swPin);
+  void update();
 
-  void setOnRotate(void (*callback)(int));
-  void setOnClick(void (*callback)());
+  void setOnRotate(std::function<void(int)> callback);
+  void setOnClick(std::function<void()> callback);
 
 private:
-  uint8_t _clkPin, _dtPin, _swPin;
-  int _lastClk = HIGH;
-  bool _lastButton = HIGH;
-  unsigned long _lastDebounce = 0;
-
-  void (*rotateCallback)(int) = nullptr;
-  void (*clickCallback)() = nullptr;
+  int _clkPin, _dtPin, _swPin;
+  int _lastState = 0;
+  std::function<void(int)> _rotateCallback;
+  std::function<void()> _clickCallback;
 };
 
 extern EncoderInput encoderInput;

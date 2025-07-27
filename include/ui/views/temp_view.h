@@ -1,14 +1,22 @@
 #pragma once
-#include "../view_base.h"
-#include <Arduino.h>
+#include "../ui_view.h"
 
-class TempView : public UIView {
+class TempChangeView;
+class TempView : public UIView
+{
 public:
-  void render() override;
-  void onClick() override;
-  void onRotate(int dir) override;
+  void render(Adafruit_SSD1306 *display) override;
+  std::function<void(int)> onRotate() override;
+  std::function<void()> onClick() override;
 
 private:
+  TempChangeView *tempChangeView = nullptr;
+  int setPoint = 225;
   bool editing = false;
-  int setPoint = 225; // Default temp
+
+  void handleRotate(int dir);
+  void handleClick();
+
+  void enterTempChangeView();
+  void exitTempChangeView();
 };

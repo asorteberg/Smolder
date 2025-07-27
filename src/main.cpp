@@ -1,35 +1,43 @@
+#include "input_manager.h"
 #include "ui/ui_manager.h"
-#include "ui/views/temp_view.h"
-#include "ui/views/settings_view.h"
-#include "ui/ui_manager.h"
-#include "ui/encoder.h"
 
-#define PIN_ENCODER_CLK  2
-#define PIN_ENCODER_DT   3
-#define PIN_ENCODER_SW   4
+Adafruit_SSD1306 display;
+InputManager inputManager;
+UIManager uiManager(inputManager);
 
-// TempView tempView;
-// SettingsView settingsView;
+// Handle rotation with sub-view delegation
+void handleGlobalRotate(int direction) {
+  Serial.println(direction);
+  uiManager.handleRotate(direction);
+}
+
+// Selection with center click
+void handleGlobalClick() {
+  Serial.println("Center click - view specific action");
+  uiManager.handleClick();
+}
 
 void setup() {
-  encoderInput.begin(PIN_ENCODER_CLK, PIN_ENCODER_DT, PIN_ENCODER_SW);
 
-  encoderInput.setOnRotate([](int dir) {
-    uiManager.handleRotate(dir);
-  });
-
-  encoderInput.setOnClick([]() {
-    uiManager.handleClick();
-  });
-  // Initialize display, rotary encoder, etc.
-
-  //uiManager.addView(&tempView);
-  //uiManager.addView(&settingsView);
-  //uiManager.begin();
+  Serial.begin(115200);
+  Serial.println("Smolder Controller Starting...");
+  
+  inputManager.begin(2, 23, 4); // CLK, DT, SW
+  
+  // Set up global input handlers
+  inputManager.setRotateHandler(handleGlobalRotate);
+  inputManager.setClickHandler(handleGlobalClick);
+  
+  if (!uiManager.begin()) {
+    Serial.println("Failed to initialize display!");
+    while (1);
+  }
+  
+  Serial.println("System initialized successfully");
 }
 
 void loop() {
-   encoderInput.update(); // polling loop
-  // Handle encoder rotation & click
-  // uiManager.update();
+  inputManager.update();
+  uiManager.update();
+  delay(10);
 }
