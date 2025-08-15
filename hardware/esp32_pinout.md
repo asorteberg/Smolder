@@ -15,11 +15,11 @@ This is a stable, long-term pin assignment plan for your ESP32-based kamado gril
 | GPIO 12   | Fan Control (PWM via MOSFET)| N-FET Gate / Fan GND         | PWM speed control                 |
 | GPIO 13   | MAX6675 CS1                 | Thermocouple 1 CS            | SPI CS 1                          |
 | GPIO 14   | MAX6675 CS2                 | Thermocouple 2 CS            | SPI CS 2                          |
-| GPIO 18   | SPI CLK                     | MAX6675                      | Hardware SPI                      |
-| GPIO 19   | SPI MISO                    | MAX6675                      | Hardware SPI                      |
+| GPIO 18   | SPI CLK                     | MAX6675 (both)               | Hardware SPI - shared             |
+| GPIO 19   | MAX6675 DO                  | Thermocouple 1 Data Out      | Dedicated to MAX6675 #1           |
 | GPIO 21   | I2C SDA                     | OLED Display                 | Shared I2C bus                    |
 | GPIO 22   | I2C SCL                     | OLED Display                 | Shared I2C bus                    |
-| GPIO 23   | Optional Feature / Button   | —                             | Reserved                          |
+| GPIO 23   | MAX6675 DO                  | Thermocouple 2 Data Out      | Dedicated to MAX6675 #2           |
 
 ---
 
@@ -42,13 +42,23 @@ This is a stable, long-term pin assignment plan for your ESP32-based kamado gril
 
 ---
 
-## 🔥 Thermocouple (MAX6675 x1 or x2)
+## 🔥 Thermocouple (MAX6675 x2)
 
+**MAX6675 #1 (Grill Thermocouple):**
 - **VCC** → 3.3V
 - **GND** → GND
-- **SCK** → GPIO 18 (shared)
-- **CS**  → GPIO 13 (TC1), GPIO 14 (TC2 optional)
-- **MISO** → GPIO 19 (shared)
+- **SCK** → GPIO 18 (shared clock)
+- **CS**  → GPIO 13
+- **DO**  → GPIO 19
+
+**MAX6675 #2 (Food Thermocouple):**
+- **VCC** → 3.3V
+- **GND** → GND
+- **SCK** → GPIO 18 (shared clock)
+- **CS**  → GPIO 14
+- **DO**  → GPIO 23
+
+⚠️ **Important**: Each MAX6675 needs its own dedicated DO (Data Out) pin. DO pins cannot be shared between modules.
 
 ---
 
@@ -106,10 +116,11 @@ Use external 5V regulator if servo/fan draw exceeds USB current limit.
             | GPIO  5 ──▶ Servo           |
             | GPIO 12 ──▶ Fan PWM (MOSFET)|
             |                             |
-            | GPIO 13 ◀── MAX6675 CS1     |
-            | GPIO 14 ◀── MAX6675 CS2     |
-            | GPIO 18 ──▶ SPI CLK         |
-            | GPIO 19 ◀── SPI MISO        |
+            | GPIO 13 ──▶ MAX6675 #1 CS   |
+            | GPIO 14 ──▶ MAX6675 #2 CS   |
+            | GPIO 18 ──▶ SPI CLK (shared)|
+            | GPIO 19 ◀── MAX6675 #1 DO   |
+            | GPIO 23 ◀── MAX6675 #2 DO   |
             |                             |
             | GPIO 21 ──▶ I2C SDA (OLED)  |
             | GPIO 22 ──▶ I2C SCL (OLED)  |

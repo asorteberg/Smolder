@@ -10,7 +10,7 @@
             "includePath": [
                 "/Users/andrewsorteberg/Documents/Dev/Smolder/include",
                 "/Users/andrewsorteberg/Documents/Dev/Smolder/src",
-                "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/Adafruit MAX31855 library",
+                "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/MAX6675 library",
                 "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/Adafruit SH110X",
                 "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/Adafruit GFX Library",
                 "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/Adafruit BusIO",
@@ -252,7 +252,7 @@
                 "path": [
                     "/Users/andrewsorteberg/Documents/Dev/Smolder/include",
                     "/Users/andrewsorteberg/Documents/Dev/Smolder/src",
-                    "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/Adafruit MAX31855 library",
+                    "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/MAX6675 library",
                     "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/Adafruit SH110X",
                     "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/Adafruit GFX Library",
                     "/Users/andrewsorteberg/Documents/Dev/Smolder/.pio/libdeps/esp32dev/Adafruit BusIO",
