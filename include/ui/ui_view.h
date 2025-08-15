@@ -1,11 +1,11 @@
 #pragma once
-#include <Adafruit_SSD1306.h>
+#include <Adafruit_SH110X.h>
 #include <functional>
 
 class UIView {
 public:
-  virtual void render(Adafruit_SSD1306* display) = 0;
-  virtual void update(Adafruit_SSD1306* display) {}
+  virtual void render(Adafruit_SH1106G* display) = 0;
+  virtual void update(Adafruit_SH1106G* display) {}
   virtual std::function<void(int)> onRotate() = 0;
   virtual std::function<void()> onClick() = 0;
   

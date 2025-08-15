@@ -12,7 +12,7 @@
 }
     },
     {
-      "type": "wokwi-ssd1306",
+      "type": "wokwi-ssd1106",
       "id": "oled",
       "top": 140,
       "left": 190,
@@ -36,7 +36,7 @@
     [ "esp32:GND.2", "oled:GND", "black" ],
     [ "esp32:3V3", "oled:3V3", "red" ],
     [ "esp32:D2", "encoder:CLK", "orange" ],
-    [ "esp32:D23", "encoder:DT", "purple" ],
+    [ "esp32:D15", "encoder:DT", "purple" ],
     [ "esp32:D4", "encoder:SW", "yellow" ],
     [ "esp32:GND.1", "encoder:GND", "black" ],
     [ "esp32:3V3", "encoder:VCC", "red" ],

@@ -4,10 +4,10 @@
 
 TempChangeView::TempChangeView() {}
 
-void TempChangeView::render(Adafruit_SSD1306* display) {
+void TempChangeView::render(Adafruit_SH1106G* display) {
     display->clearDisplay();
     display->setTextSize(2);
-    display->setTextColor(SSD1306_WHITE);
+    display->setTextColor(SH110X_WHITE);
     display->setCursor(10, 25);
     display->print(setPoint);
     display->setTextSize(1);

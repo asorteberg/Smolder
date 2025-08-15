@@ -1,5 +1,5 @@
 #pragma once
-#include <Adafruit_SSD1306.h>
+#include <Adafruit_SH110X.h>
 #include "ui_view.h"
 #include "../input_manager.h"
 
@@ -14,7 +14,7 @@ public:
   void handleRotate(int direction); // Handle rotation with sub-view delegation
 
 private:
-  Adafruit_SSD1306 display;
+  Adafruit_SH1106G display;
   InputManager& inputManager;
   static const int MAX_VIEWS = 4;
   UIView* views[MAX_VIEWS];

@@ -15,7 +15,7 @@ SettingsListView::~SettingsListView() {
   delete pidConfigView;
 }
 
-void SettingsListView::render(Adafruit_SSD1306* display) {
+void SettingsListView::render(Adafruit_SH1106G* display) {
   // Check for sub-view first
   if (hasSubView()) {
     getSubView()->render(display);
@@ -24,12 +24,12 @@ void SettingsListView::render(Adafruit_SSD1306* display) {
   
   display->clearDisplay();
   display->setTextSize(1);
-  display->setTextColor(SSD1306_WHITE);
+  display->setTextColor(SH110X_WHITE);
   
   // Title
   display->setCursor(0, 0);
   display->print("Settings Menu");
-  display->drawLine(0, 10, 128, 10, SSD1306_WHITE);
+  display->drawLine(0, 10, 128, 10, SH110X_WHITE);
   
   // Menu items
   int y = 16;

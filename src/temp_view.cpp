@@ -1,8 +1,10 @@
 #include "ui/views/temp_view.h"
 #include "ui/views/temp_change_view.h"
+
 #include "config.h"
 
-void TempView::render(Adafruit_SSD1306 *display)
+
+void TempView::render(Adafruit_SH1106G *display)
 {
   // If we have a sub-view, render it instead
   if (hasSubView()) {
@@ -11,7 +13,7 @@ void TempView::render(Adafruit_SSD1306 *display)
   }
   display->clearDisplay();
   display->setTextSize(1);
-  display->setTextColor(SSD1306_WHITE);
+  display->setTextColor(SH110X_WHITE);
   const char *text = "SMOLDER UI";
   int text_width = strlen(text) * 6; // 6 pixels per character
   int text_x = (128 - text_width) / 2;

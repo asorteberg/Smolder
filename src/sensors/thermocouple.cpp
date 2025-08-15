@@ -1,5 +1,5 @@
-#include "thermocouple.h"
-#include "../config.h"
+#include "sensors/thermocouple.h"
+#include "config.h"
 #include <SPI.h>
 
 extern int foodTemp;

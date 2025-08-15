@@ -9,7 +9,7 @@ SettingsView::~SettingsView() {
   delete settingsListView;
 }
 
-void SettingsView::render(Adafruit_SSD1306* display) {
+void SettingsView::render(Adafruit_SH1106G* display) {
   // If we have a sub-view, render it instead
   if (hasSubView()) {
     getSubView()->render(display);
@@ -19,12 +19,12 @@ void SettingsView::render(Adafruit_SSD1306* display) {
   // Render main settings view
   display->clearDisplay();
   display->setTextSize(1);
-  display->setTextColor(SSD1306_WHITE);
+  display->setTextColor(SH110X_WHITE);
   display->setCursor(0, 0);
   // Centered gear icon (128x64 display, icon is 32x32)
   int x = (128 - 32) / 2;
   int y = 8;
-  display->drawBitmap(x, y, gear_bitmap_32, 32, 32, SSD1306_WHITE);
+  display->drawBitmap(x, y, gear_bitmap_32, 32, 32, SH110X_WHITE);
   const char* text = "Settings";
   int text_width = strlen(text) * 6; // 6 pixels per character
   int text_x = (128 - text_width) / 2;
@@ -34,7 +34,7 @@ void SettingsView::render(Adafruit_SSD1306* display) {
   display->print(text);
   
   // Show "Click to enter" hint
-  display->setCursor(text_x - 12, text_y + 12);
+  display->setCursor(text_x - 18, text_y + 12);
   display->print("Click to enter");
   
   display->display();

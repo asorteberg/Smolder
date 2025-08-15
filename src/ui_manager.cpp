@@ -8,12 +8,12 @@ UIManager::UIManager(InputManager& input)
 }
 
 bool UIManager::begin() {
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+  if (!display.begin(0x3C, true)) {
     return false;
   }
 
   display.clearDisplay();
-  display.drawBitmap(32, 0, smolder_logo, 64, 128, SSD1306_WHITE);
+  display.drawBitmap(32, 0, smolder_logo, 64, 128, SH110X_WHITE);
   display.display();
   delay(2000); 
   

@@ -35,7 +35,7 @@ This is a stable, long-term pin assignment plan for your ESP32-based kamado gril
 ## 🌀 Rotary Encoder (KY-040 or similar)
 
 - **CLK (A)** → GPIO 2
-- **DT (B)**  → GPIO 3
+- **DT (B)**  → GPIO 15
 - **SW (btn)** → GPIO 4
 - **VCC** → 3.3V
 - **GND** → GND
@@ -100,7 +100,7 @@ Use external 5V regulator if servo/fan draw exceeds USB current limit.
             |         ESP32 Dev Board     |
             |                             |
             | GPIO  2 ◀── Encoder CLK     |
-            | GPIO  3 ◀── Encoder DT      |
+            | GPIO  15 ◀── Encoder DT      |
             | GPIO  4 ◀── Encoder SW      |
             |                             |
             | GPIO  5 ──▶ Servo           |

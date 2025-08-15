@@ -7,7 +7,7 @@
 class PidConfigView : public UIView {
 public:
   PidConfigView();
-  void render(Adafruit_SSD1306* display) override;
+  void render(Adafruit_SH1106G* display) override;
   std::function<void(int)> onRotate() override;
   std::function<void()> onClick() override;
   
